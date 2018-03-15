@@ -29,6 +29,7 @@ metadata:
     namespace: $namespace
     name: $artifactsName
 spec:
+   storageClassName: manual
    accessModes:
      - ReadWriteMany
    resources:
