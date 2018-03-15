@@ -45,7 +45,7 @@ spec:
          - containerPort: 7050
         command: ["orderer"]
         volumeMounts:
-         - mountPath: /var/hyperledger/orderer/msp 
+         - mountPath: /var/hyperledger/orderer/msp
            name: certificate
            #subPath: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp
            subPath: $mspPath
@@ -55,7 +55,7 @@ spec:
            subPath: $tlsPath
          - mountPath: /var/hyperledger/orderer/orderer.genesis.block
            name: certificate
-           subPath: genesis.block
+           subPath: channel-artifacts/genesis.block
       volumes:
        - name: certificate
          persistentVolumeClaim:
