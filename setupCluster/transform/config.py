@@ -145,8 +145,8 @@ def configORDERERS(name, path, ORDERER_PATH):  # name means ordererid
          ordererID=ordererName,
          podName=ordererName + "-" + orgName,
          localMSPID=orgName.capitalize() + "MSP",
-         mspPath=mspPathTemplate.format(namespace, name),
-         tlsPath=tlsPathTemplate.format(namespace, name),
+         mspPath=mspPathTemplate.format(orgName, name),
+         tlsPath=tlsPathTemplate.format(orgName, name),
          nodePort=exposedPort,
          pvName=orgName + "-pv"
          )
