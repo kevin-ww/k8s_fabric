@@ -92,8 +92,8 @@ def generateYaml(member, memberPath, flag, ORDERER, PEER):
 def configPEERS(name, path, PEER):  # name means peerid.
   configTemplate = getTemplate("fabric_1_0_template_pod_peer.yaml")
 
-  mspPathTemplate = PEER + '{}/peers/{}/msp'
-  tlsPathTemplate = PEER + '{}/peers/{}/tls'
+  mspPathTemplate = PEER + '/{}/peers/{}/msp'
+  tlsPathTemplate = PEER + '/{}/peers/{}/tls'
   #mspPathTemplate = './msp'
   #tlsPathTemplate = './tls'
   nameSplit = name.split(".")
@@ -130,8 +130,8 @@ def configPEERS(name, path, PEER):  # name means peerid.
 def configORDERERS(name, path, ORDERER):  # name means ordererid
   configTemplate = getTemplate("fabric_1_0_template_pod_orderer.yaml")
 
-  mspPathTemplate = ORDERER + '{}/orderers/{}/msp'
-  tlsPathTemplate = ORDERER + '{}/orderers/{}/tls'
+  mspPathTemplate = ORDERER + '/{}/orderers/{}/msp'
+  tlsPathTemplate = ORDERER + '/{}/orderers/{}/tls'
 
   nameSplit = name.split(".")
   ordererName = nameSplit[0]

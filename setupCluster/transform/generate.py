@@ -5,6 +5,10 @@ import config as tc
 import os
 
 BASEDIR = os.path.dirname(__file__)
+
+ORDERER_PATH = "/crypto-config/ordererOrganizations"
+PEER_PATH = "/crypto-config/peerOrganizations"
+
 ORDERER = os.path.join(BASEDIR, "../crypto-config/ordererOrganizations")
 PEER = os.path.join(BASEDIR, "../crypto-config/peerOrganizations")
 
@@ -38,7 +42,7 @@ def generateDeploymentPod(orgs):
       memberDIR = os.path.join(org + suffix, member)
       # print(memberDIR)
       # print(os.listdir(memberDIR))
-      tc.generateYaml(member, memberDIR, suffix, ORDERER, PEER)
+      tc.generateYaml(member, memberDIR, suffix, ORDERER_PATH, PEER_PATH)
 
 
 # TODO kafa nodes and zookeeper nodes don't have dir to store their certificate, must use anotherway to create pod yaml.
