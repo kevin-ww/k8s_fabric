@@ -81,19 +81,19 @@ def configORGS(name, path):
     #######
 
 
-def generateYaml(member, memberPath, flag, ORDERER, PEER):
+def generateYaml(member, memberPath, flag, ORDERER_PATH, PEER_PATH):
   if flag == "/peers":
-    configPEERS(member, memberPath, PEER)
+    configPEERS(member, memberPath, PEER_PATH)
   else:
-    configORDERERS(member, memberPath, ORDERER)
+    configORDERERS(member, memberPath, ORDERER_PATH)
 
 
 # create peer/pod
-def configPEERS(name, path, PEER):  # name means peerid.
+def configPEERS(name, path, PEER_PATH):  # name means peerid.
   configTemplate = getTemplate("fabric_1_0_template_pod_peer.yaml")
 
-  mspPathTemplate = PEER + '/{}/peers/{}/msp'
-  tlsPathTemplate = PEER + '/{}/peers/{}/tls'
+  mspPathTemplate = PEER_PATH + '/{}/peers/{}/msp'
+  tlsPathTemplate = PEER_PATH + '/{}/peers/{}/tls'
   #mspPathTemplate = './msp'
   #tlsPathTemplate = './tls'
   nameSplit = name.split(".")
@@ -127,11 +127,11 @@ def configPEERS(name, path, PEER):  # name means peerid.
 
 
 # create orderer/pod
-def configORDERERS(name, path, ORDERER):  # name means ordererid
+def configORDERERS(name, path, ORDERER_PATH):  # name means ordererid
   configTemplate = getTemplate("fabric_1_0_template_pod_orderer.yaml")
 
-  mspPathTemplate = ORDERER + '/{}/orderers/{}/msp'
-  tlsPathTemplate = ORDERER + '/{}/orderers/{}/tls'
+  mspPathTemplate = ORDERER_PATH + '/orderers/{}/msp'
+  tlsPathTemplate = ORDERER_PATH + '/orderers/{}/tls'
 
   nameSplit = name.split(".")
   ordererName = nameSplit[0]
@@ -145,8 +145,8 @@ def configORDERERS(name, path, ORDERER):  # name means ordererid
          ordererID=ordererName,
          podName=ordererName + "-" + orgName,
          localMSPID=orgName.capitalize() + "MSP",
-         mspPath=mspPathTemplate.format(ordererName, name),
-         tlsPath=tlsPathTemplate.format(ordererName, name),
+         mspPath=mspPathTemplate.format(name),
+         tlsPath=tlsPathTemplate.format(name),
          nodePort=exposedPort,
          pvName=orgName + "-pv"
          )
