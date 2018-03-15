@@ -42,6 +42,7 @@ metadata:
  namespace: $org
  name: $pvName
 spec:
+ storageClassName: manual
  accessModes:
    - ReadWriteMany
  resources:
