@@ -6,8 +6,8 @@ import os
 
 BASEDIR = os.path.dirname(__file__)
 
-ORDERER_PATH = "/crypto-config/ordererOrganizations"
-PEER_PATH = "/crypto-config/peerOrganizations"
+ORDERER_PATH = "crypto-config/ordererOrganizations"
+PEER_PATH = "crypto-config/peerOrganizations"
 
 ORDERER = os.path.join(BASEDIR, "../crypto-config/ordererOrganizations")
 PEER = os.path.join(BASEDIR, "../crypto-config/peerOrganizations")
