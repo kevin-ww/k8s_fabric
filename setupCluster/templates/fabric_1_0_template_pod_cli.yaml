@@ -3,7 +3,6 @@ kind: PersistentVolume
 metadata:
     name: $artifactsName
     type: local
-    org:  $org
     label:  $pvName
 # spec:
 #     capacity:
@@ -37,7 +36,6 @@ spec:
    selector:
       matchLabels:
         type: local
-        org: $org
         label: $pvName
 
 ---
