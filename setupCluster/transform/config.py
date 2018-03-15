@@ -81,11 +81,11 @@ def configORGS(name, path):
     #######
 
 
-def generateYaml(member, memberPath, flag, ORDER, PEER):
+def generateYaml(member, memberPath, flag, ORDERER, PEER):
   if flag == "/peers":
     configPEERS(member, memberPath, PEER)
   else:
-    configORDERERS(member, memberPath, ORDER)
+    configORDERERS(member, memberPath, ORDERER)
 
 
 # create peer/pod
@@ -127,11 +127,11 @@ def configPEERS(name, path, PEER):  # name means peerid.
 
 
 # create orderer/pod
-def configORDERERS(name, path, ORDER):  # name means ordererid
+def configORDERERS(name, path, ORDERER):  # name means ordererid
   configTemplate = getTemplate("fabric_1_0_template_pod_orderer.yaml")
 
-  mspPathTemplate = ORDER + '{}/orderers/{}/msp'
-  tlsPathTemplate = ORDER + '{}/orderers/{}/tls'
+  mspPathTemplate = ORDERER + '{}/orderers/{}/msp'
+  tlsPathTemplate = ORDERER + '{}/orderers/{}/tls'
 
   nameSplit = name.split(".")
   ordererName = nameSplit[0]

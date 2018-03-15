@@ -38,7 +38,7 @@ def generateDeploymentPod(orgs):
       memberDIR = os.path.join(org + suffix, member)
       # print(memberDIR)
       # print(os.listdir(memberDIR))
-      tc.generateYaml(member, memberDIR, suffix, ORDER, PEER)
+      tc.generateYaml(member, memberDIR, suffix, ORDERER, PEER)
 
 
 # TODO kafa nodes and zookeeper nodes don't have dir to store their certificate, must use anotherway to create pod yaml.
