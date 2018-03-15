@@ -118,8 +118,8 @@ def configPEERS(name, path, PEER):  # name means peerid.
          # mspPath=mspPathTemplate.format(name),
          # tlsPath=tlsPathTemplate.format(name),
 
-         mspPath=mspPathTemplate.format(org, name),
-         tlsPath=tlsPathTemplate.format(org, name),
+         mspPath=mspPathTemplate.format(orgName, name),
+         tlsPath=tlsPathTemplate.format(orgName, name),
          nodePort1=exposedPort1,
          nodePort2=exposedPort2,
          pvName=orgName + "-pv"
