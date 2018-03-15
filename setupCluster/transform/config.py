@@ -130,8 +130,8 @@ def configPEERS(name, path, PEER_PATH):  # name means peerid.
 def configORDERERS(name, path, ORDERER_PATH):  # name means ordererid
   configTemplate = getTemplate("fabric_1_0_template_pod_orderer.yaml")
 
-  mspPathTemplate = ORDERER_PATH + '/orderers/{}/msp'
-  tlsPathTemplate = ORDERER_PATH + '/orderers/{}/tls'
+  mspPathTemplate = ORDERER_PATH + '/{}/orderers/{}/msp'
+  tlsPathTemplate = ORDERER_PATH + '/{}/orderers/{}/tls'
 
   nameSplit = name.split(".")
   ordererName = nameSplit[0]
@@ -145,11 +145,14 @@ def configORDERERS(name, path, ORDERER_PATH):  # name means ordererid
          ordererID=ordererName,
          podName=ordererName + "-" + orgName,
          localMSPID=orgName.capitalize() + "MSP",
-         mspPath=mspPathTemplate.format(name),
-         tlsPath=tlsPathTemplate.format(name),
+         mspPath=mspPathTemplate.format(namespace, name),
+         tlsPath=tlsPathTemplate.format(namespace, name),
          nodePort=exposedPort,
          pvName=orgName + "-pv"
          )
+
+  # crypto-config/ordererOrganizations/orgorderer1/orderers/orderer0.orgorderer1/
+  # crypto-config/ordererOrganizations/orderers/orderer0.orgorderer1/msp
 
 
 # if __name__ == "__main__":
