@@ -97,18 +97,18 @@ spec:
    role: peer
    peer-id: $peerID
    org: $namespace
- type: NodePort
+ #type: NodePort
  ports:
    - name: externale-listen-endpoint
      protocol: TCP
      port: 7051
      targetPort: 7051
-     nodePort: $nodePort1
+     #nodePort: $nodePort1
 
    - name: chaincode-listen
      protocol: TCP
      port: 7052
      targetPort: 7052
-     nodePort: $nodePort2
+     #nodePort: $nodePort2
 
 ---
