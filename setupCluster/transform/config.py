@@ -28,7 +28,7 @@ def getTemplate(templateName):
 
 # create org/namespace
 # name means if of org, path describe where is the namespace yaml to be created.
-def configORGS(name, path):
+def configORGS(name, path ,PEER_PATH):
   namespaceTemplate = getTemplate("fabric_1_0_template_pod_namespace.yaml")
   render(namespaceTemplate, path + "/" + name + "-namespace.yaml", org=name,
          pvName=name + "-pv",
@@ -39,11 +39,12 @@ def configORGS(name, path):
     # pod config yaml for org cli
     cliTemplate = getTemplate("fabric_1_0_template_pod_cli.yaml")
 
-    mspPathTemplate = 'users/Admin@{}/msp'
+    # mspPathTemplate = 'users/Admin@{}/msp'
+    mspPathTemplate = PEER_PATH+'/{}/users/Admin@{}/msp'
 
     render(cliTemplate, path + "/" + name + "-cli.yaml", name="cli",
            namespace=name,
-           mspPath=mspPathTemplate.format(name),
+           mspPath=mspPathTemplate.format(name,name),
            pvName=name + "-pv",
            artifactsName=name + "-artifacts-pv",
            peerAddress="peer0." + name + ":7051",

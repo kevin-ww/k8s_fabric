@@ -20,7 +20,7 @@ def generateNamespacePod(DIR):
   for org in os.listdir(DIR):
     orgDIR = os.path.join(DIR, org)
     # generate namespace first.
-    tc.configORGS(org, orgDIR)
+    tc.configORGS(org, orgDIR ,PEER_PATH)
     orgs.append(orgDIR)
     #orgs.append(orgDIR + "/" + DIR.lower())
 
